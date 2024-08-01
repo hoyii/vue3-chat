@@ -9,7 +9,7 @@
 
 <style lang="scss" scoped></style>
 
-<script setup>
+<script setup lang="ts">
 import Header from "./components/HeaderArea.vue";
 import Main from "./components/MainArea.vue";
 import Footer from "./components/FooterArea.vue";

@@ -1,37 +1,46 @@
 <!-- 这是内容区域的中部 用于显示对话列表 -->
 <template>
-  <div>
-    <div
-      class="overflow-y-scroll"
-      v-for="message in messageList"
-      :key="message.id"
-    >
-      <div v-if="message.role === 'gpt'">{{ message.text }}</div>
+  <div ref="messageContainer" class="flex justify-center overflow-y-auto p-8">
+    <div class="w-1/2">
+      <Empty v-show="messageList.length == 0"></Empty>
+      <div v-for="message in messageList" :key="message.id" class="mb-10">
+        <MessageBox
+          :role="message.role"
+          :content="message.content"
+        ></MessageBox>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import MessageBox from "@/components/MessageBox.vue";
+import Empty from "@/components/Empty.vue";
+import { useMessageListStore } from "@/stores/messageList";
+import { ref, computed, watch, nextTick } from "vue";
 
-type Message = {
-  id: number;
-  role: string;
-  text: string;
+const store = useMessageListStore();
+
+const messageContainer = ref<HTMLElement | null>(null);
+
+const messageList = computed(() => {
+  return store.state.messageList;
+});
+
+// 监听消息变化并自动滚动到底部
+watch(store.state.messageList, (newValue) => {
+  if (newValue) {
+    scrollToBottom();
+  }
+});
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    if (messageContainer.value) {
+      messageContainer.value.scrollTop = messageContainer.value.scrollHeight;
+    }
+  });
 };
-
-const messageList = ref<Array<Message>>([
-  {
-    id: 1,
-    role: "user",
-    text: "hello gpt",
-  },
-  {
-    id: 2,
-    role: "gpt",
-    text: "hello user",
-  },
-]);
 </script>
 
 <style lang="scss" scoped></style>

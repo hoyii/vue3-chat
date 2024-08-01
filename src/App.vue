@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen">
+  <div class="flex h-screen overflow-hidden">
     <SideBar class="flex-none w-1/6"></SideBar>
     <Content class="flex-grow"></Content>
   </div>
