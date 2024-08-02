@@ -46,6 +46,22 @@
 }
 
 .el-textarea {
+  font-family:
+    ui-sans-serif,
+    -apple-system,
+    system-ui,
+    Segoe UI,
+    Roboto,
+    Ubuntu,
+    Cantarell,
+    Noto Sans,
+    sans-serif,
+    Helvetica,
+    Apple Color Emoji,
+    Arial,
+    Segoe UI Emoji,
+    Segoe UI Symbol;
+  font-size: 1rem;
   --el-input-focus-border-color: none;
   --el-input-bg-color: none;
   --el-input-border-color: none;
