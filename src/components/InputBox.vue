@@ -1,6 +1,6 @@
 <!-- 这是一个输入框 -->
 <template>
-  <div class="bg-color flex p-4 space-x-2 rounded-3xl w-1/2 items-end">
+  <div class="bg-color flex p-4 space-x-2 rounded-2xl w-1/2 items-end">
     <FileUploader />
     <el-input
       id="input_1"

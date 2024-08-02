@@ -1,8 +1,9 @@
 <!-- 这是底部的输入区域 -->
 <template>
-  <div class="flex flex-col items-center mt-4 mb-8">
-    <FileList></FileList>
-    <InputBox></InputBox>
+  <div>
+    <div class="flex flex-col items-center mt-4 mb-8">
+      <FileList></FileList> <InputBox></InputBox>
+    </div>
   </div>
 </template>
 

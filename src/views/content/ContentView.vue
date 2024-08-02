@@ -3,7 +3,7 @@
   <div class="flex flex-col h-full">
     <Header class="flex-none h-1/8"></Header>
     <Main class="flex-grow"></Main>
-    <Footer class="flex-none h-1/8"></Footer>
+    <Footer class="flex-none h-1/8 w-full"></Footer>
   </div>
 </template>
 

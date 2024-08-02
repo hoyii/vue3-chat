@@ -12,5 +12,9 @@ export const useFileListStore = defineStore("fileList", () => {
     state.fileList.push(file);
   }
 
-  return { state, getFileList, appendFile };
+  function deleteFile(index: number) {
+    state.fileList.splice(index, 1);
+  }
+
+  return { state, getFileList, appendFile, deleteFile };
 });
