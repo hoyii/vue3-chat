@@ -1,5 +1,6 @@
 <template>
   <div
+    v-loading="props.isLoading"
     class="container relative flex flex-none items-center p-2 rounded-lg shadow-lg bg-white h-20 w-1/3 min-w-36"
   >
     <img src="/pdf.svg" alt="PDF icon" class="w-10 h-10 mr-2" />
@@ -18,7 +19,7 @@
       <IconoirProvider
         :icon-props="{
           color: '#ff0000',
-          'stroke-width': 1,
+          'stroke-width': 2,
           width: '1em',
           height: '1em',
         }"
@@ -32,8 +33,9 @@
 <script setup lang="ts">
 import { IconoirProvider, XmarkCircle } from "@iconoir/vue";
 import { formatName, formatSize } from "@/utils/format";
-import { useFileListStore } from "@/stores/fileList";
+import { useDocumentListStore } from "@/stores/documentList";
 const props = defineProps({
+  isLoading: Boolean,
   fileIndex: Number,
   fileName: String,
   fileSize: Number,
@@ -41,7 +43,7 @@ const props = defineProps({
 
 // 删除文档
 const handleFileDelete = (fileIndex: number) => {
-  useFileListStore().deleteFile(fileIndex);
+  useDocumentListStore().deleteDocument(fileIndex);
 };
 </script>
 

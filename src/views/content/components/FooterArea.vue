@@ -10,6 +10,6 @@
 <style lang="scss" scoped></style>
 
 <script setup lang="ts">
-import FileList from "@/components/FileList.vue";
+import FileList from "@/components/DocumentList.vue";
 import InputBox from "@/components/InputBox.vue";
 </script>

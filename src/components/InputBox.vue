@@ -76,7 +76,7 @@ import { ref, nextTick } from "vue";
 
 import { useMessageListStore } from "@/stores/messageList";
 
-import FileUploader from "./FileUploader.vue";
+import FileUploader from "./DocumentUploader.vue";
 
 const input = ref("");
 

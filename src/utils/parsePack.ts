@@ -18,3 +18,24 @@ export const parsePack = (str: string) => {
 
   return dataList.join("");
 };
+
+export const parsePack2 = (str: string) => {
+  const dataPattern = /("data": ".*?")/g;
+  let match;
+  const dataList = [];
+
+  while ((match = dataPattern.exec(str)) !== null) {
+    try {
+      let temp = `{${match[1]}}`;
+      temp = temp.replace("data", "content");
+      const json = JSON.parse(temp);
+      if (json.content) {
+        dataList.push(json.content);
+      }
+    } catch (e) {
+      console.log("JSON parse error: ", e);
+    }
+  }
+
+  return dataList.join("");
+};
