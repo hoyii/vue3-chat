@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.22",
+    "@heroicons/vue": "^2.1.5",
     "@iconoir/vue": "^7.8.0",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.0.0",

@@ -34,8 +34,13 @@ export const getAnswer = async (question: string) => {
   }
 };
 
-export const getAnswerStream = async (question: string) => {
-  const url = "https://api.gpt.ge/v1/chat/completions";
+export const getAnswerStream = async (
+  question: string,
+  model: string,
+  apiUrl: string,
+  apiKey: string
+) => {
+  const url = apiUrl;
   try {
     const res = await fetch(url, {
       headers: {
@@ -44,11 +49,11 @@ export const getAnswerStream = async (question: string) => {
       },
       method: "POST",
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: model,
         messages: [
           {
             role: "system",
-            content: `You are a helpful assistant that accurately answers queries using GitHub Privacy Statement. Use the text provided to form your answer, but avoid copying word-for-word from the context. Try to use your own words when possible. Keep your answer under 5 sentences. Be accurate, helpful, concise, and clear.`,
+            content: `You are a helpful assistant that accurately answers. Try to use your own words when possible.Be accurate, helpful, concise, and clear.`,
           },
           {
             role: "user",
