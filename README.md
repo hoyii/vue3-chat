@@ -2,7 +2,7 @@
 
 这是一个使用 Vite、Vue3、ElementPlus和Tailwind CSS 构建的类 GPT 对话界面，支持自定义 API URL 和 API Key。
 
-![image](https://github.com/hoyii/vue3-chat/images/test.gif)
+![image](https://github.com/hoyii/vue3-chat/blob/main/images/test.gif)
 
 ## 目录
 
