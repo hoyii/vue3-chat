@@ -41,7 +41,7 @@ export const useMessageListStore = defineStore("messageList", () => {
     const newId = state.messageList.length;
     let answer = "";
     const model = models[useModelStore().getModel as string];
-    const apiUrl = useModelStore().getApiUrl as string;
+    const apiUrl = `${useModelStore().getApiUrl}/chat/completions` as string;
     const apiKey = useModelStore().getApiKey as string;
     getAnswerStream(question, model, apiUrl, apiKey)
       .then((stream) => {
@@ -50,12 +50,14 @@ export const useMessageListStore = defineStore("messageList", () => {
         }
         const reader = stream.getReader();
         reader.read().then(function processText({ done, value }) {
+          // 在这里获取到了gpt的分段回复
           if (done) {
             return;
           }
-          // 在这里获取到了gpt的分段回复
-          updateMessage(newId, value);
-          answer += value;
+          if (value !== "") {
+            updateMessage(newId, value);
+            answer += value;
+          }
           // 继续读取数据
           reader.read().then(processText);
         });

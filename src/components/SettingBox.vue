@@ -1,6 +1,6 @@
 <!-- 这是模型的选择框 -->
 <template>
-  <div class="relative text-left">
+  <div ref="container" class="relative text-left">
     <div>
       <el-button
         @click="handleConfigButtonClick"
@@ -26,9 +26,11 @@
           <div class="flex space-x-4 items-center mb-4">
             <label class="inline-block text-sm font-bold w-20">API KEY</label
             ><el-input
+              ref="input"
               v-model="config.apiKey"
               type="password"
               show-password
+              class="text-sm font-bold"
             ></el-input>
           </div>
           <div class="flex justify-center">
@@ -51,6 +53,10 @@ import { useModelStore } from "@/stores/model";
 
 const showConfig = ref(false);
 
+const container = ref<HTMLElement | null>(null);
+
+const input = ref<HTMLElement | null>(null);
+
 type Config = {
   apiUrl: string;
   apiKey: string;
@@ -63,15 +69,20 @@ const config = reactive<Config>({
 
 const handleConfigButtonClick = () => {
   showConfig.value = true;
+  document.addEventListener("click", mouseClickEvent);
 };
 
 function handleConfigButtonSave() {
   showConfig.value = false;
   useModelStore().setApiKey(config.apiKey);
   useModelStore().setApiUrl(config.apiUrl);
+  document.removeEventListener("click", mouseClickEvent);
 }
 
-onmousedown = (event) => {
-  console.log(event);
+const mouseClickEvent = (e: MouseEvent) => {
+  // 如果用户点击配置框之外的区域 自动收起配置框
+  if (e.target && !container.value?.contains(e.target as HTMLElement)) {
+    showConfig.value = false;
+  }
 };
 </script>
