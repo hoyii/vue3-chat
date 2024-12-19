@@ -6,7 +6,7 @@
         @click="handleConfigButtonClick"
         class="rounded-2xl shadow-sm hover:bg-gray-50"
       >
-        <img src="/setting.svg" alt="setting" />
+        <img src="/setting.svg" alt="setting" width="20"/>
       </el-button>
     </div>
     <transition
